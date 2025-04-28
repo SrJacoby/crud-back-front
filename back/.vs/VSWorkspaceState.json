@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Routes"
+    "\\Data",
+    "\\Migrations",
+    "\\Models"
   ],
-  "SelectedNode": "\\Program.cs",
+  "SelectedNode": "\\Data\\RegisterData.cs",
   "PreviewInSolutionExplorer": false
 }
