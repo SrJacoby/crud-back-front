@@ -3,8 +3,9 @@
     "",
     "\\Data",
     "\\Migrations",
-    "\\Models"
+    "\\Models",
+    "\\Routes"
   ],
-  "SelectedNode": "\\Data\\RegisterData.cs",
+  "SelectedNode": "\\Routes\\RegisterRoutes.cs",
   "PreviewInSolutionExplorer": false
 }
