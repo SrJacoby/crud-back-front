@@ -1,27 +1,23 @@
+import { useEffect, useState } from 'react'
 import React from 'react'
 import { Link } from "react-router-dom"
 import TrashCan from '../assets/trashcan.svg'
 import './Users.css'
+import api from '../../services/api'
 
 const Users = () => {
 
-    const users = [
-        {
-          id: "123",
-          name: "Luiz",
-          email: "luiz@email.com"
-        },
-        {
-          id: "245",
-          name: "Martin",
-          email: "martin@email.com"
-        },
-        {
-          id: "156",
-          name: "Steph",
-          email: "steph@email.com"
-        }
-    ]
+    const [users, setUsers] = useState([])
+
+    async function getUsers() {
+      const usersFromApi = await api.get('/person')
+      setUsers(usersFromApi.data)
+    }
+
+    useEffect(() => {
+      console.log("useEffect foi executado")
+      getUsers()
+    }, [])
 
     return (
       <div className='container-users'>
