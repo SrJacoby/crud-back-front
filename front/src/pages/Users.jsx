@@ -5,6 +5,7 @@ import TrashCan from '../assets/trashcan.svg'
 import './Users.css'
 import api from '../../services/api'
 
+
 const Users = () => {
 
     const [users, setUsers] = useState([])
@@ -14,8 +15,12 @@ const Users = () => {
       setUsers(usersFromApi.data)
     }
 
+    async function deleteUsers(id) {
+      await api.delete(`/person/${id}`)
+      getUsers()
+    }
+    
     useEffect(() => {
-      console.log("useEffect foi executado")
       getUsers()
     }, [])
 
@@ -28,7 +33,9 @@ const Users = () => {
             <p>Nome: <span>{user.name}</span></p>
             <p>E-mail: <span>{user.email}</span></p>
           </div>
-          <button><img src={TrashCan}/></button>
+          <button onClick={() => deleteUsers(user.id)}>
+            <img src={TrashCan}/>
+          </button>
           </div>
         ))}
 
