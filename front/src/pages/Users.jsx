@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import React from 'react'
 import { Link } from "react-router-dom"
 import TrashCan from '../assets/trashcan.svg'
+import Lupa from '../assets/lupa.svg'
 import './Users.css'
 import api from '../../services/api'
 
@@ -27,6 +28,11 @@ const Users = () => {
     return (
       <div className='container-users'>
         <h1>Usuários</h1>
+        <div className='search-bar'>
+          <img src={Lupa} />
+          <input type="text" placeholder='Buscar...'/>
+        </div>
+        
         {users.map( user => (
           <div key={user.id} className='card'>
           <div>

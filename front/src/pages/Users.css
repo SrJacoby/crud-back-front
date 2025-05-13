@@ -5,6 +5,22 @@
     padding: 0;
 }
 
+.search-bar{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    gap: 5px;
+
+    & img{
+        width: 25px;
+    }
+
+    & input{
+        border-radius: 10px;
+        border-color: #1d1d1d;
+    }
+}
+
 .card{
     display: flex;
     justify-content: space-between;
