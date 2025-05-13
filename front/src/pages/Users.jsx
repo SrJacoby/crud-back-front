@@ -10,6 +10,7 @@ import api from '../../services/api'
 const Users = () => {
 
     const [users, setUsers] = useState([])
+    const [searchTerm, setSearchTerm] = useState('')
 
     async function getUsers() {
       const usersFromApi = await api.get('/person')
@@ -25,15 +26,24 @@ const Users = () => {
       getUsers()
     }, [])
 
+    const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value)
+    }
+
+    const filteredUsers = users.filter(user =>
+    user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    user.email.toLowerCase().includes(searchTerm.toLowerCase())
+  )
+
     return (
       <div className='container-users'>
         <h1>Usuários</h1>
         <div className='search-bar'>
           <img src={Lupa} />
-          <input type="text" placeholder='Buscar...'/>
+          <input type="text" placeholder='Buscar...' value={searchTerm} onChange={handleSearchChange}/>
         </div>
         
-        {users.map( user => (
+        {filteredUsers.map( user => (
           <div key={user.id} className='card'>
           <div>
             <p>Nome: <span>{user.name}</span></p>
